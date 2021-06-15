@@ -32,7 +32,10 @@ public class GameOfLife
         this.currentGen = canvas;
         this.height = canvas.length;
         this.width = canvas[0].length;
-        this.generation = 0;
+        this.generation = 1;
+
+        System.out.println("Generation : 0");
+        print( canvas );
     }
 
     private GameOfLife( String[][] canvas, int generation )
@@ -68,18 +71,18 @@ public class GameOfLife
             }
         }
 
+        System.out.println( "\nGeneration : " + generation );
         print( nextGen );
 
-//        Scanner scan = new Scanner(System.in);
-//        System.out.print("Press Enter to continue . . . ");
-//        scan.nextLine();
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Press Enter to continue . . . ");
+        scan.nextLine();
 
         new GameOfLife( nextGen, generation + 1 ).go();
     }
 
     private void print( String[][] nextGen )
     {
-        System.out.println( "Generation : " + generation );
         for( int i = 0; i < height; i++ )
         {
             System.out.println( Arrays.toString( nextGen[i] ) );
